@@ -1,101 +1,88 @@
-import logo from './logo.svg'
-import logo_dark from './logo_dark.svg'
-import cross_icon from './cross_icon.svg'
-import menu_icon from './menu_icon.svg'
-import star_icon from './star_icon.svg'
-import left_arrow from './left_arrow.svg'
-import right_arrow from './right_arrow.svg'
-import header_img from './header_img.png'
-import brand_img from './brand_img.png'
-import project_img_1 from './project_img_1.jpg'
-import project_img_2 from './project_img_2.jpg'
-import project_img_3 from './project_img_3.jpg'
-import project_img_4 from './project_img_4.jpg'
-import project_img_5 from './project_img_5.jpg'
-import project_img_6 from './project_img_6.jpg'
-import profile_img_1 from './profile_img_1.png'
-import profile_img_2 from './profile_img_2.png'
-import profile_img_3 from './profile_img_3.png'
+
+import tbc_logo from './tbc_logo.png'
+import ElementalBeverageAlchemy from './ElementalBeverageAlchemy.jpg'
+import BespokeBeverageDesign from './BespokeBeverageDesign.jpg'
+import TotalBeveragesolution from "./TotalBeveragesolution.jpg"
+import BuildingBars from "./BuildingBars.jpg"
+import AboutUs from "./AboutUs.jpg"
+import ElementalBg from "./ElementalBg.jpeg"
+import BespokeBg from './BespokeBg.jpeg'
+import TotalBg from './TotalBg.jpeg'
+import BespokeTextImage from "./BespokeTextImage.jpeg"
+import TotalTextImage from "./TotalTextImage.jpeg"
+import ElementalTextImage from "./ElementalTextImage.jpeg"
+import FounderFullImage from "./FounderFullImage.jpg"
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { faInstagram } from '@fortawesome/free-brands-svg-icons'
+import ElementalBigImg from "./ElementalBigImg.png"
+import BespokeBigImg from "./BespokeBigImg.png"
+import TotalBigImg from "./TotalBigImg.png"
+
+import GalleryImg1 from "./GalleryImg1.jpg"
+import GalleryImg2 from "./GalleryImg2.jpg"
+import GalleryImg3 from "./GalleryImg3.jpeg"
+import GalleryImg4 from "./GalleryImg4.JPG"
+import GalleryImg5 from "./GalleryImg5.JPG"
+import GalleryImg6 from "./GalleryImg6.jpeg"
+import GalleryImg7 from "./GalleryImg7.jpg"
+import GalleryImg8 from "./GalleryImg8.JPG"
+import GalleryImg9 from "./GalleryImg9.jpeg"
+import GalleryImg10 from "./GalleryImg10.JPG"
+import GalleryImg11 from "./GalleryImg11.JPG"
+import GalleryImg12 from "./GalleryImg12.jpeg"
+import GalleryImg13 from "./GalleryImg13.jpg"
+import GalleryImg14 from "./GalleryImg14.JPG"
+import GalleryImg15 from "./GalleryImg15.jpeg"
+import GalleryImg16 from "./GalleryImg16.jpg"
+import GalleryImg17 from "./GalleryImg17.jpg"
+import GalleryImg18 from "./GalleryImg18.jpeg"
+import GalleryImg19 from "./GalleryImg19.jpg"
+import GalleryImg20 from "./GalleryImg20.jpg"
+import GalleryImg21 from "./GalleryImg21.jpeg"
+
+
 
 export const assets = {
-    logo,
-    logo_dark,
-    cross_icon,
-    menu_icon,
-    star_icon,
-    header_img,
-    brand_img,
-    project_img_1,
-    project_img_2,
-    project_img_3,
-    project_img_4,
-    left_arrow,
-    right_arrow,
+    
+    tbc_logo,
+    ElementalBeverageAlchemy,
+    BespokeBeverageDesign,
+    TotalBeveragesolution,
+    BuildingBars,
+    AboutUs,
+    ElementalBg,
+    BespokeBg,
+    TotalBg,
+    BespokeTextImage,
+    ElementalTextImage,
+    TotalTextImage,
+    FounderFullImage,
+    faLinkedin,
+    faInstagram,
+    ElementalBigImg,
+    BespokeBigImg,
+    TotalBigImg,
+    
+    GalleryImg1,
+    GalleryImg2,
+    GalleryImg3,
+    GalleryImg4,
+    GalleryImg5,
+    GalleryImg6,
+    GalleryImg7,
+    GalleryImg8,
+    GalleryImg9,
+    GalleryImg10,
+    GalleryImg11,
+    GalleryImg12,
+    GalleryImg13,
+    GalleryImg14,
+    GalleryImg15,
+    GalleryImg16,
+    GalleryImg17,
+    GalleryImg18,
+    GalleryImg19,
+    GalleryImg20,
+    GalleryImg21,
 }
 
-export const projectsData = [
-    {
-      title: "Skyline Haven",
-      price: "$2,50,000",
-      location: "California",
-      image: project_img_1
-    },
-    {
-      title: "Vista Verde",
-      price: "$2,50,000",
-      location: "San Francisco",
-      image: project_img_2
-    },
-    {
-      title: "Serenity Suites",
-      price: "$2,50,000",
-      location: "Chicago",
-      image: project_img_3
-    },
-    {
-      title: "Central Square",
-      price: "$2,50,000",
-      location: "Los Angeles",
-      image: project_img_4
-    },
-    {
-      title: "Vista Verde",
-      price: "$2,50,000",
-      location: "San Francisco",
-      image: project_img_5
-    },
-    {
-      title: "Serenity Suites",
-      price: "$2,50,000",
-      location: "Chicago",
-      image: project_img_6
-    },
-    
-  ];
-
-  export const testimonialsData = [
-    {
-        name: "Donald Jackman",
-        title: "Marketing Manager",
-        image: profile_img_1,
-        alt: "Portrait of Donald Jackman",
-        rating: 5,
-        text: "From the very first meeting, they understood my vision and helped me find the perfect property. Their attention to detail and commitment to client satisfaction is unmatched."
-    },
-    {
-        name: "Richard Nelson",
-        title: "UI/UX Designer",
-        image: profile_img_2,
-        alt: "Portrait of Richard Nelson",
-        rating: 4,
-        text: "From the very first meeting, they understood my vision and helped me find the perfect property. Their attention to detail and commitment to client satisfaction is unmatched."
-    },
-    {
-        name: "James Washington",
-        title: "Co-Founder",
-        image: profile_img_3,
-        alt: "Portrait of James Washington",
-        rating: 5,
-        text: "From the very first meeting, they understood my vision and helped me find the perfect property. Their attention to detail and commitment to client satisfaction is unmatched."
-    }
-];

@@ -5,7 +5,18 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        // Enforces system sans-serif as fallback, but maps standard sans utility
+        sans: ['sans-serif'],
+      },
+      // Safely supports custom arbitrary properties used in your typography
+      letterSpacing: {
+        tightest: '-0.08em', 
+      },
+    },
   },
   plugins: [],
 }
+
+

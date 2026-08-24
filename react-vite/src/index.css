@@ -4,10 +4,144 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-    font-family: Outfit;
+/* ── GLOBAL TEXT SELECTION PROTECTION ── */
+*,
+*::before,
+*::after {
+  font-family: Outfit;
+  box-sizing: border-box;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* IE / Edge */
+  user-select: none;         /* Standard */
 }
-*::selection{
-    background-color: black;
-    color: white;
+
+/* Re-enable text selection for form inputs & textareas */
+input,
+textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
+
+/* Hide selection highlighting box globally */
+*::selection {
+  background: transparent;
+  color: inherit;
+}
+
+/* Preserve standard selection highlight inside form inputs */
+input::selection,
+textarea::selection {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* ── SMOOTH SCROLL & HORIZONTAL DEFENSE ARCHITECTURE ── */
+html.lenis,
+html.lenis body {
+  height: auto !important;
+  width: 100% !important;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  scroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+html {
+  overflow-y: scroll; 
+  overflow-x: hidden !important; 
+  width: 100vw;
+  max-width: 100%;
+}
+
+body {
+  overflow-x: hidden !important; 
+  width: 100%;
+  max-width: 100%;
+  background-color: #000000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+section {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+.navLink {
+  position: relative;
+  cursor: pointer;
+  font-weight: 300;
+  letter-spacing: 0.32em;
+  transition:
+    color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease;
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  width: 0%;
+  height: 1px;
+  background: black;
+  transform: translateX(-50%) scaleX(0.6);
+  transform-origin: center;
+  opacity: 0;
+  transition:
+    width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease,
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navLink:hover::after {
+  width: 120%;
+  opacity: 1;
+  transform: translateX(-50%) scaleX(0.9);
+}
+
+.navLink:hover {
+  transform: translateY(-2px);
+}
+
+nav:hover .navLink {
+  opacity: 0.6;
+}
+
+nav .navLink:hover {
+  opacity: 1;
+}
+
+/* Enable panel touch scrolling when menu is open */
+html.sm-lock-active .staggered-menu-panel {
+  touch-action: pan-y !important;
+  overscroll-behavior-y: contain !important;
+}
+
+

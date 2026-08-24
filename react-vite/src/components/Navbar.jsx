@@ -1,48 +1,84 @@
-import React, { useEffect, useState } from 'react'
-import {assets} from '../assets/assets'
+import React from "react";
+import StaggeredMenu from "./StaggeredMenu";
+import tbc_logo from "../assets/tbc_logo.png";
 
+export default function Navbar() {
+  const handleNavClick = (e, targetId) => {
+    e.preventDefault();
+    
+    const lenisInstance = window.lenis;
 
-const Navbar = () => {
-    const [showMobileMenu, setshowMobileMenu] = useState(false)
-    useEffect(()=>{
-        if(showMobileMenu){
-            document.body.style.overflow='hidden'
-        }else{
-            document.body.style.overflow='auto'
+    setTimeout(() => {
+      if (targetId === "home") {
+        if (lenisInstance) {
+          lenisInstance.scrollTo(0, { immediate: true });
+        } else {
+          window.scrollTo({ top: 0, behavior: "auto" });
         }
-        return ()=>{
-            document.body.style.overflow='auto'
-        }
+        window.history.pushState(null, null, " ");
+        return;
+      }
 
-    },[showMobileMenu])
+      const el = document.getElementById(targetId);
+      if (el) {
+        window.history.pushState(null, null, `#${targetId}`);
+        if (lenisInstance) {
+          lenisInstance.scrollTo(el, { immediate: true });
+        } else {
+          el.scrollIntoView({ behavior: "auto" });
+        }
+      }
+    }, 650);
+  };
+
+  const handleGlobalClick = (e) => {
+    const anchor = e.target.closest("a");
+    if (!anchor) return;
+
+    const href = anchor.getAttribute("href");
+
+    const socialMap = {
+      "#linkedin": "https://www.linkedin.com/company/lets-mix-wid-lpha/posts/?feedView=all",
+      "#instagram": "https://www.instagram.com/thebeverageconcepts/",
+      "#whatsapp": "https://wa.me/6581448355"
+    };
+
+    if (socialMap[href]) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.open(socialMap[href], "_blank", "noopener,noreferrer");
+    }
+  };
+
+  const menuItems = [
+    { label: "Home", onClick: (e) => handleNavClick(e, "home"), link: "#" },
+    { label: "About Us", onClick: (e) => handleNavClick(e, "aboutus"), link: "#aboutus" },
+    { label: "Our Services", onClick: (e) => handleNavClick(e, "ourservices"), link: "#ourservices" },
+    { label: "Gallery", onClick: (e) => handleNavClick(e, "gallery"), link: "#gallery" },
+    { label: "Contact Us", onClick: (e) => handleNavClick(e, "contactus"), link: "#contactus" },
+  ];
+
+  const socialItems = [
+    { label: "LinkedIn", link: "#linkedin" },
+    { label: "Instagram", link: "#instagram" },
+    { label: "WhatsApp", link: "#whatsapp" }
+  ];
+
   return (
-    <div className='absolute top-0 left-0 w-full z-10'>
-        <div className='container mx-auto flex justify-between items-center py-4 px-6 md:px-20 lg:px-32 bg-transparent'>
-            <img src={assets.logo} alt="" />
-            <ul className='hidden md:flex gap-7 text-white'>
-                <a href="#Header" className='cursor-pointer hover:text-gray-400'>Home</a>
-                <a href="#About" className='cursor-pointer hover:text-gray-400'>About</a>
-                <a href="#Projects" className='cursor-pointer hover:text-gray-400'>Projects</a>
-                <a href="#Testimonials" className='cursor-pointer hover:text-gray-400'>Testimonials</a>
-                <a href="#Contact" className='cursor-pointer hover:text-gray-400'>Contact Us</a>
-            </ul>
-            <button className='hidden md:block bg-white text-black  hover:text-purple-800 px-8 py-2 rounded-full'>Sign Up</button>
-            <img onClick={()=> setshowMobileMenu(true)} src={assets.menu_icon} className='md:hidden w-7 cursor-pointer' alt="" />
-        </div>
-        <div className={`md:hidden ${showMobileMenu ? 'fixed w-full': 'h-0 w-0'} right-0 top-0 bottom-0 overflow-hidden bg-white transition-all`}>
-            <div className='flex justify-end p-6 cursor-pointer'>
-                <img onClick={()=> setshowMobileMenu(false)} src={assets.cross_icon} className='w-6 transition-all' alt="" />
-            </div>
-            <ul className='flex flex-col items-center gap-2 mt-5 px-5 text-lg font-medium '>
-                <a onClick={()=> setshowMobileMenu(false)} href="#Header" className='px-4 py-2 rounded-full inline-block'>Home</a>
-                <a onClick={()=> setshowMobileMenu(false)} href="#About" className='px-4 py-2 rounded-full inline-block'>About</a>
-                <a onClick={()=> setshowMobileMenu(false)} href="#Projects" className='px-4 py-2 rounded-full inline-block'>Projects</a>
-                <a onClick={()=> setshowMobileMenu(false)} href="#Testimonials" className='px-4 py-2 rounded-full inline-block'>Testimonials</a>
-                <a onClick={()=> setshowMobileMenu(false)} href="#Contact" className='px-4 py-2 rounded-full inline-block'>Contact Us</a>
-            </ul>
-        </div>
+    <div onClickCapture={handleGlobalClick}>
+      <StaggeredMenu
+        position="right"
+        items={menuItems}
+        socialItems={socialItems}
+        displaySocials={true}
+        displayItemNumbering={true}
+        menuButtonColor="#57595B"
+        openMenuButtonColor="#000000"
+        changeMenuColorOnOpen={true}
+        colors={["#999999", "#999999"]}
+        // logoUrl={tbc_logo}
+        accentColor="#71717a"
+      />
     </div>
-  )
+  );
 }
-
-export default Navbar
