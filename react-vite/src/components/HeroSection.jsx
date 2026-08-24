@@ -143,7 +143,7 @@ export default function HeroSection() {
               className="text-[clamp(2.2rem,11vw,140px)] text-[#000000] whitespace-nowrap tracking-tight"
               style={{ fontWeight: 300 }}
             >
-              THE BEVERAGE
+              THE BEVERAG
             </div>
           </div>
           <div className="overflow-hidden py-1">
