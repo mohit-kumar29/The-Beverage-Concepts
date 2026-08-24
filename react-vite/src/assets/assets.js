@@ -2,7 +2,7 @@
 import tbc_logo from './tbc_logo.png'
 import ElementalBeverageAlchemy from './ElementalBeverageAlchemy.jpg'
 import BespokeBeverageDesign from './BespokeBeverageDesign.jpg'
-import TotalBeveragesolution from "./TotalBeveragesolution.jpg"
+import TotalBeverageSolution from "./TotalBeverageSolution.jpg";
 import BuildingBars from "./BuildingBars.jpg"
 import AboutUs from "./AboutUs.jpg"
 import ElementalBg from "./ElementalBg.jpeg"
@@ -47,7 +47,7 @@ export const assets = {
     tbc_logo,
     ElementalBeverageAlchemy,
     BespokeBeverageDesign,
-    TotalBeveragesolution,
+    TotalBeverageSolution,
     BuildingBars,
     AboutUs,
     ElementalBg,
