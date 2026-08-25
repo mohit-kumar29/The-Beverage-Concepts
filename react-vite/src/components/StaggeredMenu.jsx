@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useLayoutEffect, useRef, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import tbc_logo from "../assets/tbc_logo.png";
 
@@ -446,13 +447,23 @@ export const StaggeredMenu = ({
             <ul className="sm-panel-list list-none m-0 p-0 flex flex-col items-end gap-2 sm:gap-10">
               {items.map((it, idx) => (
                 <li className="sm-panel-itemWrap relative overflow-hidden" key={idx}>
-                  <a className="sm-link-container group flex items-start no-underline py-1 w-[260px] sm:w-[380px] md:w-[460px] lg:w-[580px]" href={it.link} onClick={(e) => { it.onClick?.(e); closeMenu(); }}>
-                    <div className="overflow-hidden relative flex-1 text-left whitespace-nowrap">
-                      <span className="sm-panel-itemLabel block text-[#000000] font-light text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight uppercase leading-none transition-transform duration-300 ease-out group-hover:translate-x-3">
-                        {it.label}
-                      </span>
-                    </div>
-                  </a>
+                  {it.link?.startsWith('/') && !it.link?.startsWith('/#') ? (
+                    <Link className="sm-link-container group flex items-start no-underline py-1 w-[260px] sm:w-[380px] md:w-[460px] lg:w-[580px]" to={it.link} onClick={(e) => { it.onClick?.(e); closeMenu(); }}>
+                      <div className="overflow-hidden relative flex-1 text-left whitespace-nowrap">
+                        <span className="sm-panel-itemLabel block text-[#000000] font-light text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight uppercase leading-none transition-transform duration-300 ease-out group-hover:translate-x-3">
+                          {it.label}
+                        </span>
+                      </div>
+                    </Link>
+                  ) : (
+                    <a className="sm-link-container group flex items-start no-underline py-1 w-[260px] sm:w-[380px] md:w-[460px] lg:w-[580px]" href={it.link} onClick={(e) => { it.onClick?.(e); closeMenu(); }}>
+                      <div className="overflow-hidden relative flex-1 text-left whitespace-nowrap">
+                        <span className="sm-panel-itemLabel block text-[#000000] font-light text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight uppercase leading-none transition-transform duration-300 ease-out group-hover:translate-x-3">
+                          {it.label}
+                        </span>
+                      </div>
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -577,19 +588,19 @@ export const StaggeredMenu = ({
                     <h2 className="sm-socials-title m-0 text-[10px] sm:text-[11px] lg:text-[12px] uppercase tracking-widest text-[#000000] font-medium whitespace-nowrap">What We Offer</h2>
                     <ul className="sm-socials-list list-none m-0 p-0 flex flex-col items-start gap-2">
                       <li>
-                        <a href="/elemental-beverage-alchemy" className="sm-socials-link text-[10px] sm:text-xs lg:text-sm font-normal text-zinc-500 no-underline hover:text-black transition-colors duration-300 whitespace-nowrap">
+                        <Link to="/elemental-beverage-alchemy" onClick={closeMenu} className="sm-socials-link text-[10px] sm:text-xs lg:text-sm font-normal text-zinc-500 no-underline hover:text-black transition-colors duration-300 whitespace-nowrap">
                           Elemental Beverage Alchemy
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="/bespoke-beverage-design" className="sm-socials-link text-[10px] sm:text-xs lg:text-sm font-normal text-zinc-500 no-underline hover:text-black transition-colors duration-300 whitespace-nowrap">
+                        <Link to="/bespoke-beverage-design" onClick={closeMenu} className="sm-socials-link text-[10px] sm:text-xs lg:text-sm font-normal text-zinc-500 no-underline hover:text-black transition-colors duration-300 whitespace-nowrap">
                           Bespoke Beverage Design
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="/total-beverage-solution" className="sm-socials-link text-[10px] sm:text-xs lg:text-sm font-normal text-zinc-500 no-underline hover:text-black transition-colors duration-300 whitespace-nowrap">
+                        <Link to="/total-beverage-solution" onClick={closeMenu} className="sm-socials-link text-[10px] sm:text-xs lg:text-sm font-normal text-zinc-500 no-underline hover:text-black transition-colors duration-300 whitespace-nowrap">
                           Total Beverage Solution
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
